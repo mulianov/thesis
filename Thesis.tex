@@ -1,0 +1,126 @@
+% **************************************************************************************************************
+% Note:
+%    * You must not use "u etc. in strings/commands that will be spaced out (use \"u or real umlauts instead)
+%    * Chapters must be marked with the \myChapter{Foo} command (sorry for the inconvenience at this point)
+%    * New enumeration (small caps): \begin{aenumerate} \end{aenumerate}
+%    * For margin notes: \graffito{}
+%    * Do not use bold fonts in this style, it is designed around them
+%    * Use tables as in the examples
+%    * See classicthesis-ldpkg.sty for useful commands
+% **************************************************************************************************************
+\documentclass[ twoside,openright,titlepage,fleqn,pointlessnumbers,headinclude,%1headlines,% 
+                10pt,a4paper,BCOR5mm,footinclude,cleardoubleempty,abstractoff % <--- obsolete, remove (todo)
+                ]{scrreprt}
+% ********************************************************************
+\listfiles
+% ********************************************************************
+% Re-usable information
+% ********************************************************************
+\newcommand{\myTitle}{Decoy state generator for QKD\xspace}
+\newcommand{\myDegree}{Master of Science degree\xspace}
+\newcommand{\myName}{Mikhail Ulyanov\xspace}
+\newcommand{\myProf}{Johannes Skaar\xspace}
+\newcommand{\myOtherProf}{somebody\xspace}
+\newcommand{\mySupervisor}{Vadim Makarov\xspace}
+\newcommand{\myFaculty}{Put data here\xspace}
+\newcommand{\myDepartment}{Put data here\xspace}
+\newcommand{\myUni}{\protect{Put data here}\xspace}
+\newcommand{\myLocation}{Trondheim\xspace}
+\newcommand{\myTime}{June 2009\xspace}
+\newcommand{\myVersion}{Version 2.5\xspace}
+%*******************************************************
+% Packages with options that might require adjustments
+%*******************************************************
+\usepackage[square,numbers]{natbib} 
+\usepackage[fleqn]{amsmath} % math environments and more by the AMS 
+%*******************************************************
+\usepackage{classicthesis-ldpkg} 
+%*******************************************************
+% Options for classicthesis.sty:
+% tocaligned eulerchapternumbers drafting linedheaders listsseparated
+% subfig nochapters beramono eulermath parts minionpro pdfspacing
+\usepackage[eulerchapternumbers,drafting,%pdfspacing,%
+            subfig,beramono,eulermath,parts]{classicthesis}
+%*******************************************************            
+% Setup and Finetuning
+%*******************************************************
+\newlength{\abcd} % for ab..z string length calculation
+\newcommand{\myfloatalign}{\centering} % how all the floats will be aligned
+\setlength{\extrarowheight}{3pt} % increase table row height
+% ********************************************************************
+% Captions look and feel
+%*******************************************************
+\captionsetup{format=hang,font=small}
+% ********************************************************************
+% Where to look for graphics
+%*******************************************************
+%\graphicspath{{gfx/}{misc/}} % considered harmful according to l2tabu
+% ********************************************************************
+% Hyperreferences
+%*******************************************************
+\hypersetup{%
+    colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    % uncomment the following line if you want to have black links (e.g., for printing)
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    pdftitle={\myTitle},%
+    pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
+    pdfsubject={},%
+    pdfkeywords={},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref and classicthesis}%
+}
+%********************************************************************
+% Hyphenation
+%*******************************************************
+%\hyphenation{put special hyphenation here}
+% ********************************************************************
+% GO!GO!GO! MOVE IT!
+%*******************************************************
+\begin{document}
+\frenchspacing
+\raggedbottom
+%\selectlanguage{american} % american ngerman
+%\renewcommand*{\bibname}{new name}
+%\setbibpreamble{}
+\pagenumbering{roman}
+\pagestyle{plain}
+%********************************************************************
+% Frontmatter
+%*******************************************************
+\include{FrontBackmatter/DirtyTitlepage}
+\include{FrontBackmatter/Titlepage}
+\include{FrontBackmatter/Titleback}
+\cleardoublepage\include{FrontBackmatter/Dedication}
+\cleardoublepage\include{FrontBackmatter/Abstract}
+\cleardoublepage\include{FrontBackmatter/Acknowledgments}
+\pagestyle{scrheadings}
+\cleardoublepage\include{FrontBackmatter/Contents}
+%********************************************************************
+% Mainmatter
+%*******************************************************
+\pagenumbering{arabic}
+% use \cleardoublepage here to avoid problems with pdfbookmark
+\cleardoublepage\myPart{Main part}
+\include{Chapters/Chapter01}
+%\cleardoublepage\myPart{Experiment and results}
+\include{Chapters/Chapter02}
+%\addtocontents{toc}{\protect\clearpage} % TEST
+\include{Chapters/Chapter03}
+% ********************************************************************
+% Backmatter
+%*******************************************************
+\appendix
+\cleardoublepage\myPart{Appendix}
+\include{Chapters/Chapter0A}
+%********************************************************************
+% Other Stuff in the Back
+%*******************************************************
+\cleardoublepage\include{FrontBackmatter/Bibliography}
+\cleardoublepage\include{FrontBackmatter/Colophon}
+%*******************************************************
+\end{document}
+% ********************************************************************
