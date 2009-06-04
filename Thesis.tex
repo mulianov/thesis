@@ -1,7 +1,4 @@
 % **************************************************************************************************************
-% Note:
-%    * You must not use "u etc. in strings/commands that will be spaced out (use \"u or real umlauts instead)
-%    * Chapters must be marked with the \myChapter{Foo} command (sorry for the inconvenience at this point)
 %    * New enumeration (small caps): \begin{aenumerate} \end{aenumerate}
 %    * For margin notes: \graffito{}
 %    * Do not use bold fonts in this style, it is designed around them
@@ -31,6 +28,10 @@
 %*******************************************************
 % Packages with options that might require adjustments
 %*******************************************************
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[russian,english]{babel} 
 \usepackage[square,numbers]{natbib} 
 \usepackage[fleqn]{amsmath} % math environments and more by the AMS 
 %*******************************************************
@@ -83,7 +84,7 @@
 \begin{document}
 \frenchspacing
 \raggedbottom
-%\selectlanguage{american} % american ngerman
+\selectlanguage{english} % american ngerman
 %\renewcommand*{\bibname}{new name}
 %\setbibpreamble{}
 \pagenumbering{roman}
@@ -91,10 +92,8 @@
 %********************************************************************
 % Frontmatter
 %*******************************************************
-\include{FrontBackmatter/DirtyTitlepage}
 \include{FrontBackmatter/Titlepage}
 \include{FrontBackmatter/Titleback}
-\cleardoublepage\include{FrontBackmatter/Dedication}
 \cleardoublepage\include{FrontBackmatter/Abstract}
 \cleardoublepage\include{FrontBackmatter/Acknowledgments}
 \pagestyle{scrheadings}
@@ -104,7 +103,7 @@
 %*******************************************************
 \pagenumbering{arabic}
 % use \cleardoublepage here to avoid problems with pdfbookmark
-\cleardoublepage\myPart{Main part}
+%\cleardoublepage\myPart{Main part}
 \include{Chapters/Chapter01}
 %\cleardoublepage\myPart{Experiment and results}
 \include{Chapters/Chapter02}
@@ -114,13 +113,10 @@
 % Backmatter
 %*******************************************************
 \appendix
-\cleardoublepage\myPart{Appendix}
+%\cleardoublepage\myPart{Appendix}
 \include{Chapters/Chapter0A}
-%********************************************************************
-% Other Stuff in the Back
 %*******************************************************
 \cleardoublepage\include{FrontBackmatter/Bibliography}
-\cleardoublepage\include{FrontBackmatter/Colophon}
 %*******************************************************
 \end{document}
 % ********************************************************************
